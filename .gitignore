@@ -1,3 +1,6 @@
+# Test CSV files
+*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -106,6 +109,7 @@ __pypackages__/
 
 # Celery stuff
 celerybeat-schedule
+
 celerybeat.pid
 
 # SageMath parsed files
@@ -114,6 +118,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.testenv/
 env/
 venv/
 ENV/
