@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import logging
 
-def merge_dataframes(left: pd.DataFrame, right: pd.DataFrame, column: str, keep: str, keep_missing: str):
+from merge_csv.validate_options import validate_options
+
+def merge_dataframes(left: pd.DataFrame, right: pd.DataFrame, column: str, keep: str, keep_missing: str) -> pd.DataFrame:
     """
     Merges two Pandas DataFrames
     

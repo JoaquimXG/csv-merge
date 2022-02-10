@@ -1,7 +1,8 @@
 import pandas as pd
 import logging
 
-from . import merge_dataframes
+from .validate_options import validate_options
+from .merge_dataframes import merge_dataframes
 
 def merge_files(left_file: str, right_file: str, column: str, keep: str = 'none', keep_missing: str = 'none') -> pd.DataFrame:
     """
@@ -25,4 +26,4 @@ def merge_files(left_file: str, right_file: str, column: str, keep: str = 'none'
     validate_options(dfLeft, dfRight, column, keep, keep_missing)
     
     log.info("Starting Merge")
-    return merge_data_frames(dfLeft, dfRight, column, keep, keep_missing)
+    return merge_dataframes(dfLeft, dfRight, column, keep, keep_missing)
