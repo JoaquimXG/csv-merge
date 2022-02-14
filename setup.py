@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="merge_csv_xjg",
-    version="0.0.4",
+    version="0.0.5",
     author="Joaquim Gomez",
     description="Merge two CSV files with pandas",
     long_description=long_description,

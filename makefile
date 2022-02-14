@@ -16,7 +16,7 @@ clean:
 .PHONY: clean-build
 clean-build:
 	$(MAKE) clean
-	$(MAKE) build
+	$(MAKE) dist/
 
 .PHONY: clean-publish
 clean-publish:
