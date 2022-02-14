@@ -2,9 +2,9 @@ import pandas as pd
 import logging
 
 from .validate_options import validate_options
-from .merge_dataframes import merge_dataframes
+from .merge_dataframes import merge_dataframes_multiple_columns, merge_dataframes_single_column
 
-def merge_files(left_file: str, right_file: str, column: str, keep: str = 'none', keep_missing: str = 'none') -> pd.DataFrame:
+def merge_files(left_file: str, right_file: str, columns: list, keep: str = 'none', keep_missing: str = 'none') -> pd.DataFrame:
     """
     Merges two csv files 
     Parameters:
@@ -23,7 +23,10 @@ def merge_files(left_file: str, right_file: str, column: str, keep: str = 'none'
     dfLeft = pd.read_csv(left_file)
     dfRight = pd.read_csv(right_file)
 
-    validate_options(dfLeft, dfRight, column, keep, keep_missing)
+    validate_options(dfLeft, dfRight, columns, keep, keep_missing)
     
     log.info("Starting Merge")
-    return merge_dataframes(dfLeft, dfRight, column, keep, keep_missing)
+    if len(columns) == 1:
+        return merge_dataframes_single_column(dfLeft, dfRight, columns[0], keep, keep_missing)
+    else:
+        return merge_dataframes_multiple_columns(dfLeft, dfRight, columns[0], keep)

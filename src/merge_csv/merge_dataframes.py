@@ -4,7 +4,22 @@ import logging
 
 from merge_csv.validate_options import validate_options
 
-def merge_dataframes(left: pd.DataFrame, right: pd.DataFrame, column: str, keep: str, keep_missing: str) -> pd.DataFrame:
+def merge_dataframes_multiple_columns(left: pd.DataFrame, right: pd.DataFrame, columns: list, keep: str):
+    """
+    Merges two Pandas DataFrames using pd.merge.
+    This primarily provides a cli interface for merging csvs 
+    In future it would be preferable to extend merge_dataframes_single_column to handle multiple columns including missing values in some or all columns
+
+    """
+    if keep == 'both':
+        keep = 'outer'
+    if keep == 'none':
+        keep = 'inner'
+    
+    return pd.merge(left, right, on=columns, how=keep)
+
+
+def merge_dataframes_single_column(left: pd.DataFrame, right: pd.DataFrame, column: str, keep: str, keep_missing: str) -> pd.DataFrame:
     """
     Merges two Pandas DataFrames
     
@@ -23,7 +38,7 @@ def merge_dataframes(left: pd.DataFrame, right: pd.DataFrame, column: str, keep:
     """
     log = logging.getLogger(__name__)
     
-    validate_options(left, right, column, keep, keep_missing)
+    validate_options(left, right, [column], keep, keep_missing)
 
     copied_from_left = set()
     outRows = []

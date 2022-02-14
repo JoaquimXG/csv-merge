@@ -1,14 +1,15 @@
 import pandas as pd
 import logging
 
-def validate_options(left: pd.DataFrame, right: pd.DataFrame, column: str, keep: str, keep_missing: str) -> bool:
+def validate_options(left: pd.DataFrame, right: pd.DataFrame, columns: list, keep: str, keep_missing: str) -> bool:
     log = logging.getLogger(__name__)
-    # Check if column in each file 
-    if column not in left.columns:
-        raise ValueError(f"Column: {column}, not found in left file")
+    for column in columns:
+        # Check if column in each file 
+        if column not in left.columns:
+            raise ValueError(f"Column: {column}, not found in left file")
 
-    if column not in left.columns:
-        raise ValueError(f"Column: {column}, not found in right file")
+        if column not in left.columns:
+            raise ValueError(f"Column: {column}, not found in right file")
     
     valid_keep_values = ['left', 'right', 'both', 'none']
     if keep not in valid_keep_values:
