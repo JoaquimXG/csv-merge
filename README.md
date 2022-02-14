@@ -29,3 +29,8 @@ Options:
   -v, --verbose                   Output extra information
   --help                          Show this message and exit.
 ```
+
+# TODO 
+
+- Match based on values in multiple columns
+- Only copy specific columns from each of the sheets
