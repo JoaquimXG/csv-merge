@@ -29,4 +29,4 @@ def merge_files(left_file: str, right_file: str, columns: list, keep: str = 'non
     if len(columns) == 1:
         return merge_dataframes_single_column(dfLeft, dfRight, columns[0], keep, keep_missing)
     else:
-        return merge_dataframes_multiple_columns(dfLeft, dfRight, columns[0], keep)
+        return merge_dataframes_multiple_columns(dfLeft, dfRight, columns, keep)
