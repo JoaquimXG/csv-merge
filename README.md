@@ -32,5 +32,4 @@ Options:
 
 # TODO 
 
-- Match based on values in multiple columns
 - Only copy specific columns from each of the sheets
